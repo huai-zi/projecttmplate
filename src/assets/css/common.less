@@ -1,0 +1,207 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+em,
+p,
+img,
+small,
+strong,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+form,
+label,
+table,
+caption,
+tbody,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 14px;
+  vertical-align: baseline
+}
+
+ol,
+ul {
+  list-style: none
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal
+}
+
+strong {
+  font-weight: 600
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.clear {
+  clear: both
+}
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  /*在移动端特殊设置,取消高亮设置,将其中改成透明的颜色*/
+  /*设置所有的盒子的宽度以边框开始计算*/
+  -webkit-box-sizing: border-box;
+  /*要兼容webket浏览器内核厂商  这种情况一般是老的移动端浏览器*/
+  box-sizing: border-box;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.clear-fix::after,
+.clear-fix::before {
+  content: ".";
+  line-height: 0;
+  height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+input,
+textarea {
+  border: none;
+  outline: none;
+  resize: none;
+  /*不允许用户拉伸文本框*/
+  /*特殊的属性定义  清楚浏览器给input自带的样式*/
+  -webkit-appearance: none;
+  /*组建默认的样式为空*/
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+  line-height: normal !important;
+}
+
+.over_hidden {
+  overflow: hidden;
+}
+
+.clear {
+  clear: both
+}
+
+// 文字左中右居中
+@textPosition: left, center, right;
+
+each(@textPosition, {
+    .text_@{value} {
+      text-align: @value;
+    }
+  }
+
+);
+
+// 浮动定位
+@pullPosition: left, right;
+
+each(@pullPosition, {
+    .pull_@{value} {
+      float: @value;
+    }
+  }
+
+);
+
+// 间距数据遍历
+.generate-columns(150);
+
+.generate-columns(@n, @i: 1) when (@i =< @n) {
+  .p_l_@{i} {
+    padding-left: (@i + 0px);
+  }
+
+  .p_r_@{i} {
+    padding-right: (@i + 0px);
+  }
+
+  .p_t_@{i} {
+    padding-top: (@i + 0px);
+  }
+
+  .p_b_@{i} {
+    padding-bottom: (@i + 0px);
+  }
+
+  .m_b_@{i} {
+    margin-bottom: (@i + 0px);
+  }
+
+  .m_t_@{i} {
+    margin-top: (@i + 0px);
+  }
+
+  .m_l_@{i} {
+    margin-left: (@i + 0px);
+  }
+
+  .m_r_@{i} {
+    margin-right: (@i + 0px);
+  }
+
+  .generate-columns(@n, (@i + 1));
+}
