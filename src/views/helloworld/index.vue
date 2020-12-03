@@ -7,14 +7,14 @@
 </template>
 
 <script>
-  import components from '@/components'
-
+  import component from '@/components'
+  
   export default {
     data() {
       return {};
     },
     components: {
-      Case: components.case
+      Case: component.case
     },
     computed: {},
     mounted() {},

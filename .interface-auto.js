@@ -7,6 +7,7 @@ var filePath = path.resolve(`${__dirname}\\src\\apiPort`);
 //调用文件遍历方法  
 let interfaces = []
 let index = 1;
+let errorIndex = 0;
 fileDisplay(filePath);
 /** 
  * 文件遍历方法 
@@ -55,26 +56,40 @@ function fileDisplay(filePath) {
 function writeInterface(apiPort, index) {
 
   let text = `'use strict'
-
 import http from '@/api';
+import messageAlert from '@/util/messageAlert';
 `;
 
   apiPort.map((item) => {
-    text += `
+
+    if (!!item.eventName && !!item.url) {
+      text += `
 /* ${item.remark || '无'} */
 export const ${item.eventName} = async (params = {}) => {
-    let response = await http.${item.type ? item.type.toLowerCase() : 'get'}('${item.url}', params);
-    response = response['data'] || [];
-    return response
+  let response = await http.${item.type ? item.type.toLowerCase() : 'get'}('${item.url}', params);
+  response = response['data'] || {};
+  
+  if (!!response.code) {
+    messageAlert({
+      code: response.code,
+      message: response.message ? response.message : '请通知管理员检查异常！'
+    })
+  }
+  return response
 }
 `;
+    } else {
+      // 错误汇总
+      errorIndex++;
+    }
+
   });
 
   fs.writeFile(__dirname + "/src/services/index.js", text, (err) => {
     if (err) {
       return console.log(err);
     }
-    console.log(`第${index}个文件接口汇总完毕!`);
+    console.log(`第 ${index} 个文件接口汇总完毕！共 ${errorIndex} 个错误，请按照规范进行矫正，否则影响正常使用。`);
   });
 
 }

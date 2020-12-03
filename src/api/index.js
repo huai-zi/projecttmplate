@@ -1,8 +1,6 @@
 import store from '@/store';
 
-import {
-  Notification
-} from 'element-ui';
+import messageAlert from '@/util/messageAlert'
 
 axios.defaults.timeout = 60000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
@@ -28,10 +26,10 @@ axios.interceptors.response.use(function (response) {
 
   const status = Number(response.status) || 200;
   if (status !== 200) {
-    Notification({
-      'message': `数据请求出现${response.data.code},请联系管理员 !`,
-      'type': 'error'
-    });
+    messageAlert({
+      message: `数据请求出现${response.data.code},请联系管理员 !`,
+    })
+
     return;
   }
 
@@ -39,12 +37,10 @@ axios.interceptors.response.use(function (response) {
 }, function (error) {
   store.commit('login/loading', false);
 
-  // 对响应错误做点什么，402为后台session值过期
-  Notification({
-    'message': '请求服务超时 , 服务器关闭或系统服务异常 , 请联系管理员 !',
-    'type': 'error',
-    'duration': 5000
-  });
+  // 对响应错误做点什么
+  messageAlert({
+    message: '请求服务超时 , 服务器关闭或系统服务异常 , 请联系管理员 !',
+  })
 
   return Promise.reject(error);
 });

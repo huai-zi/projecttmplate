@@ -11,5 +11,5 @@ module.exports = [{
   eventName: "userLogin",
   url: "/user/login",
   type: "POST",
-  remark: "用户登录",
+  remark: "用户登录"
 }]
