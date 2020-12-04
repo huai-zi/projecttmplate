@@ -56,17 +56,23 @@ function fileDisplay(filePath) {
 function writeInterface(apiPort, index) {
 
   let text = `'use strict'
-import http from '@/api';
+import request from '@/api';
 import messageAlert from '@/util/messageAlert';
 `;
 
   apiPort.map((item) => {
 
     if (!!item.eventName && !!item.url) {
+      let method = item.method ? item.method.toLowerCase() : 'get';
+      
       text += `
 /* ${item.remark || '无'} */
 export const ${item.eventName} = async (params = {}) => {
-  let response = await http.${item.type ? item.type.toLowerCase() : 'get'}('${item.url}', params);
+  let response = await request({
+    "url": "${item.url}",
+    "method": "${method}",
+    "${item.type ? (item.type === 'json' ? 'data' : item.type) : (method === 'get' ? 'params' : 'data')}": params
+  });
   response = response['data'] || {};
   
   if (!!response.code) {

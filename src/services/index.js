@@ -1,10 +1,14 @@
 'use strict'
-import http from '@/api';
+import request from '@/api';
 import messageAlert from '@/util/messageAlert';
 
 /* 用户登录 */
 export const userLogin = async (params = {}) => {
-  let response = await http.post('/user/login', params);
+  let response = await request({
+    "url": "/api/page/getPageContent",
+    "method": "put",
+    "data": params
+  });
   response = response['data'] || {};
   
   if (!!response.code) {

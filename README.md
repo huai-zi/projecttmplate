@@ -57,13 +57,14 @@ src/
 vue方法使用，this.$axios.eventxxxx("参数对象")
 ```
 
-按照规范进行调用，**注意**确保 `exentName` 的唯一性。否则无法生效。
+按照规范进行调用，**注意**确保 `exentName` 的唯一性。否则无法生效。（*为必填项）
 
 |   参数    |   说明   |  类型  |       可选值        | 默认值 |
 | :-------: | :------: | :----: | :-----------------: | :----: |
-| exentName | 函数名称 | string |         --          |   --   |
-|   type    | 请求类型 | string | get/post/delete/put |  get   |
-|    url    | 请求路径 | string |         --          |   --   |
+| *exentName | 函数名称 | string |         --          |   --   |
+|   method    | 请求类型 | string | get/post/delete/put |  get   |
+|   type    | 传参类型 | object/string/number | json/params |  get类型下params、post类型下json、delete类型下json、put类型下json   |
+|    *url    | 请求路径 | string |         --          |   --   |
 |  remark   | 方法说明 | string |         --          |   --   |
 
 ## 全局变量介绍
