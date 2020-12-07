@@ -13,6 +13,10 @@ Vue.prototype.$config = configuration;
 // ui主题（不使用则注释掉，默认注释）
 // import '@/theme/index.css';
 
+// 动态meta
+import Meta from 'vue-meta'
+Vue.use(Meta)
+
 // 接口hook
 import * as services from '@/services';
 Vue.prototype.$axios = services;
@@ -21,6 +25,10 @@ Vue.prototype.$axios = services;
 Vue.prototype.$baseUrl = process.env.baseUrl;
 
 Vue.config.productionTip = false;
+
+// 全局mixins
+import globalMixin from '@/mixins'
+Vue.mixin(globalMixin)
 
 /* vue初始化 */
 new Vue({

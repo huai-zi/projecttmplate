@@ -8,10 +8,12 @@
 
 <script>
   import component from '@/components'
-  
+
   export default {
     data() {
-      return {};
+      return {
+        title: 'hellow页面'
+      };
     },
     components: {
       Case: component.case

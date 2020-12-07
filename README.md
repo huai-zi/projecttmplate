@@ -41,7 +41,7 @@ src/
 
 ## 接口自动化规则
 
-在`src/apiPort文件夹下`，创建模块js文件，使用es5 module.exports导出配置json，json格式如下：（每修改一次配置json文件，需要在根目录执行一次npm run interface，生成新的接口文件）
+在`src/apiPort文件夹下`，创建模块 js 文件，使用 es5 module.exports 导出配置 json，json 格式如下：（每修改一次配置 json 文件，需要在根目录执行一次 npm run interface，生成新的接口文件）
 
 ```js
 [
@@ -54,20 +54,39 @@ src/
 ```
 
 ```js
-vue方法使用，this.$axios.eventxxxx("参数对象")
+vue方法使用，this.$axios.eventxxxx("传值对象 或 序列化参数")
 ```
 
-按照规范进行调用，**注意**确保 `exentName` 的唯一性。否则无法生效。（*为必填项）
+按照规范进行调用，**注意**确保 `exentName` 的唯一性。否则无法生效。（\*为必填项）
 
-|   参数    |   说明   |  类型  |       可选值        | 默认值 |
-| :-------: | :------: | :----: | :-----------------: | :----: |
-| *exentName | 函数名称 | string |         --          |   --   |
-|   method    | 请求类型 | string | get/post/delete/put |  get   |
-|   type    | 传参类型 | object/string/number | json/params |  get类型下params、post类型下json、delete类型下json、put类型下json   |
-|    *url    | 请求路径 | string |         --          |   --   |
-|  remark   | 方法说明 | string |         --          |   --   |
+|    参数     |   说明   |         类型         |       可选值        |                                  默认值                                  |
+| :---------: | :------: | :------------------: | :-----------------: | :----------------------------------------------------------------------: |
+| \*exentName | 函数名称 |        string        |         --          |                                    --                                    |
+|    \*url    | 请求路径 |        string        |         --          |                                    --                                    |
+|   method    | 请求类型 |        string        | get/post/delete/put |                                   get                                    |
+|    type     | 传参类型 | object/string/number |     json/params     | get 类型下 params、post 类型下 json、delete 类型下 json、put 类型下 json |
+|   remark    | 方法说明 |        string        |         --          |                                    --                                    |
+
+## 自动化 meta 标签
+
+一般情况下，如果需要使用动态 meta，添加页面title、处理显示按钮等业务。可以手动自行配置，如下：
+```js
+> 在vue页面中data属性赋值
+data(){
+  return {
+    title: "页面meta",
+    meta: [
+      {
+        name: "name属性",
+        content: "contetn属性"
+      }
+    ]
+  }
+}
+```
 
 ## 全局变量介绍
+
 ```js
 this.$config  =>  配置文件信息
 this.$axios  =>  接口调用函数集合

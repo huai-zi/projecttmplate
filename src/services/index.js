@@ -6,8 +6,8 @@ import messageAlert from '@/util/messageAlert';
 export const userLogin = async (params = {}) => {
   let response = await request({
     "url": "/api/page/getPageContent",
-    "method": "put",
-    "data": params
+    "method": "get",
+    "params": params
   });
   response = response['data'] || {};
   

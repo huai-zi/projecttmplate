@@ -14,6 +14,6 @@ let url = `${host}/page/getPageContent`
 module.exports = [{
   eventName: "userLogin",
   url: url,
-  method: "put",
+  method: "get",
   remark: "用户登录"
 }]

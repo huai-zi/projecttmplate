@@ -2,7 +2,7 @@
 <template>
   <div id="login">
     <div class="m_t_100 text_center">
-      <el-button type="primary">登录页面 ce- {{ login }}</el-button>
+      <el-button type="primary" @click='log'>登录页面 ce- {{ login }}</el-button>
     </div>
   </div>
 </template>
@@ -11,7 +11,9 @@
   export default {
     name: "login",
     data() {
-      return {};
+      return {
+        title: 'meta名称',
+      };
     },
     components: {},
     computed: {
@@ -22,7 +24,11 @@
       }
     },
     mounted() {},
-    methods: {}
+    methods: {
+      async log() {
+        this.$router.push('/helloworld')
+      }
+    }
   };
 
 </script>

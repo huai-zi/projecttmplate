@@ -1,5 +1,3 @@
-import store from '@/store';
-
 import messageAlert from '@/util/messageAlert'
 
 // 创建 axios 实例
@@ -10,12 +8,10 @@ const request = axios.create({
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 
 const err = error => {
-  store.commit('login/loading', false);
 
   messageAlert({
     message: '请求服务超时 , 服务器关闭或系统服务异常 , 请联系管理员 !',
   })
-
   return Promise.reject(error);
 }
 
@@ -23,23 +19,18 @@ const err = error => {
 request.interceptors.request.use(function (config) {
   // 添加headers到post请求中
   // config.headers.token = 'token';
-
-  store.commit('login/loading', true);
   return config;
-
 }, err);
 
 // 添加响应拦截器
 request.interceptors.response.use(function (response) {
   // 对响应数据做点什么
-  store.commit('login/loading', false);
 
   const status = Number(response.status) || 200;
   if (status !== 200) {
     messageAlert({
       message: `数据请求出现${response.data.code},请联系管理员 !`,
     })
-
     return;
   }
 
