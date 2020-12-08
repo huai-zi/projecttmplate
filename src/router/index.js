@@ -1,4 +1,6 @@
 // 引入依赖
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 import autoRouter from "../../static/js/vue-auto";
 Vue.use(VueRouter);
 

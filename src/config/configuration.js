@@ -1,4 +1,5 @@
 // Vue 配置页面
+import Vue from 'vue'
 import NProgress from 'nprogress';
 import router from '@/router';
 

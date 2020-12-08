@@ -1,4 +1,5 @@
 // 入口文件，全局方法
+import Vue from 'vue'
 import App from './App';
 import store from './store';
 

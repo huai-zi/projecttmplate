@@ -4,7 +4,8 @@ const files = require.context('./', true, /\.vue$/);
 let components = {};
 
 files.keys().map(item => {
-  let name = item.replace(/\.\/\w+\/(\w+)\.vue/g, '$1');
+  let _name = item.split(".vue")[0].split("/");
+  let name = _name[_name.length - 1];
   components[name] = require(`${item}`).default;
 })
 export default components

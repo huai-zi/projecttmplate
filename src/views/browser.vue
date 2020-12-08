@@ -1,8 +1,8 @@
 <!-- 浏览器兼容页面 -->
 <template>
   <div id='browsers'>
-    <p class="text-center browserFloor">温馨提示：您当前的浏览器版本过低，存在安全风险</p>
-    <p class="text-center browserFloor tiyan">为了您的良好体验，请升级浏览器</p>
+    <p class="text_center browserFloor">温馨提示：您当前的浏览器版本过低，存在安全风险</p>
+    <p class="text_center browserFloor tiyan">为了您的良好体验，请升级浏览器</p>
     <ul>
       <li v-for='(item,index) in browsers' :key='index' @click='downloadBorwser(item.download)'>
         <img :src="item.imgs" alt="">

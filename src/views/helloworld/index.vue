@@ -8,7 +8,7 @@
 
 <script>
   import component from '@/components'
-
+  
   export default {
     data() {
       return {
