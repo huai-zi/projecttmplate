@@ -1,42 +1,16 @@
 // 入口文件，全局方法
 import App from './App';
-import router from './router';
 import store from './store';
 
-import '@/element-ui';
-import '@/assets/css/common.less';
-
-// 配置文件
-import configuration from '@/config'
-Vue.prototype.$config = configuration;
-
-// ui主题（不使用则注释掉，默认注释）
-// import '@/theme/index.css';
-
-// 动态meta
-import Meta from 'vue-meta'
-Vue.use(Meta)
-
-// 接口hook
-import * as services from '@/services';
-Vue.prototype.$axios = services;
-
-// 当前环境变量
-Vue.prototype.$baseUrl = process.env.baseUrl;
+// 配置文件 修改配置请移步 config/configuration
+import router from '@/config/configuration'
 
 Vue.config.productionTip = false;
-
-// 全局mixins
-import globalMixin from '@/mixins'
-Vue.mixin(globalMixin)
 
 /* vue初始化 */
 new Vue({
   el: '#app',
   router,
   store,
-  components: {
-    App
-  },
-  template: '<App/>'
-})
+  render: h => h(App)
+}).$mount('#app');

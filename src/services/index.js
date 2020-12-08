@@ -3,9 +3,9 @@ import request from '@/api';
 import messageAlert from '@/util/messageAlert';
 
 /* 用户登录 */
-export const userLogin = async (params = {}) => {
+export const userEvnent = async (params = {}) => {
   let response = await request({
-    "url": "/api/page/getPageContent",
+    "url": "/mock/getUser",
     "method": "get",
     "params": params
   });

@@ -7,6 +7,11 @@
 <script>
   export default {
     name: "App",
+    data() {
+      return {
+        title: this.$config.headTitle || ""
+      }
+    },
     mounted() {
       this.IEVersion();
     },
@@ -36,7 +41,7 @@
 <style lang='less'>
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    color: @fontColor;
+    color: @fontColor; //使用global.less中的全局变量
   }
 
 </style>

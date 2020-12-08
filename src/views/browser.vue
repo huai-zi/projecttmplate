@@ -16,6 +16,7 @@
   export default {
     data() {
       return {
+        title:"浏览器版本过低",
         browsers: [{
             imgs: require('@/assets/browser/google.png'),
             text: '谷歌浏览器',

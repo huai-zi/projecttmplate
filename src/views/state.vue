@@ -22,6 +22,7 @@
     name: "Error404",
     data() {
       return {
+        title: "404",
         state: {
           status: '',
           title: ''
@@ -73,9 +74,10 @@
   }
 
   .error404 {
-    .el-button--text{
+    .el-button--text {
       border: 1px solid #2d8cf0;
     }
+
     &-body-con {
       width: 700px;
       height: 500px;

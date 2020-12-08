@@ -15,5 +15,6 @@ switch (params) {
 }
 module.exports = merge(prodEnv, {
   NODE_ENV: '"production"',
-  baseUrl: baseUrl
+  baseUrl: baseUrl,
+  MOCK: 'false'
 })

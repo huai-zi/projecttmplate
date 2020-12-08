@@ -8,11 +8,11 @@
  * @param 特别注意：导出方式只能使用es5语法，切记
  */
 
-let host = '/api';
-let url = `${host}/page/getPageContent`
+let host = '/mock';
+let url = `${host}/getUser`
 
 module.exports = [{
-  eventName: "userLogin",
+  eventName: "userEvnent",
   url: url,
   method: "get",
   remark: "用户登录"
