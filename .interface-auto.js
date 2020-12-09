@@ -64,14 +64,35 @@ import messageAlert from '@/util/messageAlert';
 
     if (!!item.eventName && !!item.url) {
       let method = item.method ? item.method.toLowerCase() : 'get';
+      let typeKey = '';
+      let urlT = `"${item.url}"`
       
+      // 参数类型转换
+      switch (item.type) {
+        case 'params':
+          typeKey = `"params": params`;
+          break;
+        case 'url':
+          typeKey = '';
+          urlT = `"${item.url}/" + params`
+          break;
+        default:
+          typeKey = `"data": params`;
+          break;
+      }
+      
+      // get默认传参params  post默认传参json
+      if(!item.type && method === 'get'){
+        typeKey = `"params": params`;
+      }
+
       text += `
 /* ${item.remark || '无'} */
 export const ${item.eventName} = async (params = {}) => {
   let response = await request({
-    "url": "${item.url}",
+    "url": ${urlT},
     "method": "${method}",
-    "${item.type ? (item.type === 'json' ? 'data' : item.type) : (method === 'get' ? 'params' : 'data')}": params
+    ${typeKey}
   });
   response = response['data'] || {};
   

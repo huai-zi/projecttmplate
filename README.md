@@ -76,7 +76,7 @@ vue方法使用，this.$axios.eventxxxx("传值对象 或 序列化参数")
 | \*exentName | 函数名称 |        string        |         --          |                                    --                                    |
 |    \*url    | 请求路径 |        string        |         --          |                                    --                                    |
 |   method    | 请求类型 |        string        | get/post/delete/put |                                   get                                    |
-|    type     | 传参类型 | object/string/number |     json/params     | get 类型下 params、post 类型下 json、delete 类型下 json、put 类型下 json |
+|    type     | 传参类型 | object/string/number |     json/params/url     | get 类型下 params、post 类型下 json、delete 类型下 json、put 类型下 json，**特殊情况**，参数在url后缀，则为url数据接口传参，如：/user/:id，请设置type : 'url'，传参不变 |
 |   remark    | 方法说明 |        string        |         --          |                                    --                                    |
 
 ## 自动化 meta 标签
@@ -157,7 +157,7 @@ views/
 ];
 ```
 
-## 嵌套路由
+## 嵌套路由（多层级嵌套规则相同）
 
 创建内嵌子路由，你需要添加一个 Vue 文件，同时添加一个**与该文件同名**的目录用来存放子视图组件。
 
